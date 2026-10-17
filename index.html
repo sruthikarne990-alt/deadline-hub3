@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Scholarship & Exam Deadline Hub</title>
+<meta name="description" content="Find scholarships and exams, track deadlines, organize documents and get reminders before every important date.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--surf:#f5f6fc;--ink:#14173a;--mut:#4d5275;--line:#dcdff0;--ac:#3730a3;--ac2:#4f46e5;--on:#fff;--red:#b42318;--redbg:#fde8e6;--amb:#8a4b00;--ambbg:#fff1d6;--blu:#1d4ed8;--blubg:#e3ecff;--grn:#17663a;--grnbg:#e0f4e8;--gry:#555;--grybg:#eceef3;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0e1026;--surf:#171a3a;--ink:#eceefc;--mut:#aab0d6;--line:#2c3066;--ac:#a5b4fc;--ac2:#818cf8;--on:#0e1026;--red:#ffb4ab;--redbg:#4a1d1a;--amb:#ffd28a;--ambbg:#4a3412;--blu:#a9c3ff;--blubg:#1e2d5c;--grn:#8fe0b0;--grnbg:#173d2a;--gry:#c3c6d6;--grybg:#2a2d45}}
+:root[data-theme=dark]{--bg:#0e1026;--surf:#171a3a;--ink:#eceefc;--mut:#aab0d6;--line:#2c3066;--ac:#a5b4fc;--ac2:#818cf8;--on:#0e1026;--red:#ffb4ab;--redbg:#4a1d1a;--amb:#ffd28a;--ambbg:#4a3412;--blu:#a9c3ff;--blubg:#1e2d5c;--grn:#8fe0b0;--grnbg:#173d2a;--gry:#c3c6d6;--grybg:#2a2d45}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "Public Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;line-height:1.2;margin:0 0 .5em}
+h1{font-size:clamp(2rem,6vw,3.2rem)}h2{font-size:1.7rem}h3{font-size:1.2rem}
+a{color:var(--ac)}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--ac2);outline-offset:2px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:var(--ac);color:var(--on);padding:8px;z-index:20}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--line);z-index:10}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:11}
+.bar{max-width:1100px;margin:auto;padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
+.brand{font:700 1.15rem "Source Serif 4",serif;color:var(--ac);text-decoration:none;margin-right:auto}
+nav ul{display:flex;flex-wrap:wrap;gap:2px;list-style:none;margin:0;padding:0}
+nav a{display:block;padding:6px 10px;border-radius:8px;text-decoration:none;color:var(--ink);font-size:.95rem}
+nav a[aria-current=page]{background:var(--ac);color:var(--on)}
+main{max-width:1100px;margin:auto;padding:24px 16px 64px}
+.hero{padding:28px 0 8px}.hero p{max-width:60ch;color:var(--mut);font-size:1.15rem}
+.search{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.search input{flex:1;min-width:220px}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;min-height:44px;max-width:100%}
+.btn{font:inherit;font-weight:600;background:var(--ac);color:var(--on);border:0;border-radius:10px;padding:10px 18px;min-height:44px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.alt{background:transparent;color:var(--ac);border:1.5px solid var(--ac)}
+.btn.sm{padding:6px 12px;min-height:36px;font-size:.9rem}
+.next{border:1.5px solid var(--ac);border-radius:14px;padding:6px 18px;margin:24px 0;background:var(--surf)}
+.next h2{font-size:1.1rem;margin:12px 0 4px}
+.row{display:flex;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line);flex-wrap:wrap}.row:first-of-type{border-top:0}
+.row .t{flex:1;min-width:180px}.row .t a{font-weight:600}.row .t small{display:block;color:var(--mut)}
+.pill{display:inline-block;border-radius:99px;padding:2px 10px;font-size:.82rem;font-weight:600;white-space:nowrap}
+.u-over{background:var(--grybg);color:var(--gry)}.u-7{background:var(--redbg);color:var(--red)}.u-30{background:var(--ambbg);color:var(--amb)}.u-later{background:var(--blubg);color:var(--blu)}
+.s-Verified{background:var(--grnbg);color:var(--grn)}.s-Review{background:var(--ambbg);color:var(--amb)}.s-User{background:var(--blubg);color:var(--blu)}.s-Closed{background:var(--grybg);color:var(--gry)}.s-Flagged{background:var(--redbg);color:var(--red)}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+.card{border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px;background:var(--bg)}
+.card h3{margin:0}.card h3 a{text-decoration:none;color:var(--ink)}.card .meta{color:var(--mut);font-size:.92rem}.card .foot{margin-top:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding-top:8px}
+.tag{font-size:.8rem;border:1px solid var(--line);border-radius:6px;padding:0 7px;color:var(--mut)}
+.filters{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));background:var(--surf);padding:14px;border-radius:14px;margin:16px 0}
+.filters label{font-size:.85rem;color:var(--mut);display:grid;gap:3px}
+.note{background:var(--ambbg);color:var(--amb);border-radius:10px;padding:8px 12px;font-size:.9rem;margin:12px 0}
+dl.facts{display:grid;grid-template-columns:max-content 1fr;gap:6px 18px}dl.facts dt{color:var(--mut)}dl.facts dd{margin:0}
+.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:560px}th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;min-width:640px}.cal .h{font-weight:600;color:var(--mut);font-size:.85rem}
+.cal .d{min-height:84px;border:1px solid var(--line);border-radius:8px;padding:4px;font-size:.78rem}.cal .d b{font-size:.85rem}.cal .d span{display:block;border-radius:4px;padding:1px 5px;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.seg{display:inline-flex;border:1.5px solid var(--ac);border-radius:10px;overflow:hidden}.seg button{border:0;background:none;color:var(--ac);padding:8px 14px;font:inherit;min-height:40px;cursor:pointer}.seg button[aria-pressed=true]{background:var(--ac);color:var(--on)}
+details{border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:8px 0}summary{cursor:pointer;font-weight:600}
+.two{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.hp{position:absolute;left:-9999px}
+.chk{display:flex;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}.chk input{width:22px;height:22px;min-height:0}
+footer{border-top:1px solid var(--line);padding:24px 16px;text-align:center;color:var(--mut);font-size:.9rem}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--ac);color:var(--on);padding:10px 18px;border-radius:10px;z-index:30}
+@media(prefers-reduced-motion:no-preference){.toast{animation:in .2s}}@keyframes in{from{opacity:0}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="bar">
+<a class="brand" href="#/">Deadline Hub</a>
+<nav aria-label="Main"><ul id="nav"></ul></nav>
+</div></header>
+<main id="main" tabindex="-1"></main>
+<footer>Sample data for development. Always confirm dates, fees and rules on the official website before you apply.<br>© 2026 Scholarship & Exam Deadline Hub · <a href="#/about">Privacy & contact</a></footer>
+<div id="toast" role="status" aria-live="polite"></div>
+<script>
+const DAY=864e5,base=new Date();base.setHours(0,0,0,0);
+const at=(o,h=23,m=59)=>{const d=new Date(base.getTime()+o*DAY);d.setHours(h,m,0,0);return d};
+const SD=["Transcripts","Personal essay","Recommendation letters","ID proof","Financial documents"],ED=["ID proof","Recent photograph","Previous marksheets","Fee payment receipt"];
+// id,title,type,org,country,level,field,amt,award,due,fee,status,tags,url,elig,gpa,tz
+const R=[
+["fulbright","Fulbright Foreign Student Program","Scholarship","U.S. Department of State","United States","Postgraduate","Any",60000,"Tuition, living stipend, airfare and insurance",12,"None","Verified",["government","international","merit-based"],"https://foreign.fulbrightonline.org","Citizens of participating countries with a bachelor’s degree and strong English.",3.3,"America/New_York"],
+["chevening","Chevening Scholarships","Scholarship","UK Foreign, Commonwealth & Development Office","United Kingdom","Postgraduate","Any",45000,"Full tuition, monthly stipend and travel",-4,"None","Closed",["government","international","leadership"],"https://www.chevening.org","Two years of work experience; return home for two years after the award.",3.0,"Europe/London"],
+["gates-cam","Gates Cambridge Scholarship","Scholarship","Gates Cambridge Trust","United Kingdom","PhD","Any",70000,"Full cost of study at Cambridge plus maintenance",5,"None","Verified",["merit-based","international","private"],"https://www.gatescambridge.org","Non-UK applicants admitted to a full-time Cambridge postgraduate course.",3.7,"Europe/London"],
+["daad","DAAD Study Scholarships","Scholarship","DAAD","Germany","Postgraduate","Engineering",14400,"Monthly stipend, health insurance and travel allowance",24,"None","Verified",["government","STEM","international"],"https://www.daad.de/en","Recent graduates with a degree from a recognized university.",3.0,"Europe/Berlin"],
+["erasmus","Erasmus Mundus Joint Masters","Scholarship","European Commission","European Union","Postgraduate","Any",48000,"Tuition, travel and living costs",42,"None","Verified",["government","international","merit-based"],"https://erasmus-plus.ec.europa.eu","Bachelor’s degree; each programme sets its own deadline.",3.0,"Europe/Brussels"],
+["kh","Knight-Hennessy Scholars","Scholarship","Stanford University","United States","Postgraduate","Any",90000,"Full funding for graduate study at Stanford",-12,"$0","Closed",["leadership","private","merit-based"],"https://knight-hennessy.stanford.edu","Applicants to any Stanford graduate programme within 8 years of a bachelor’s.",3.5,"America/Los_Angeles"],
+["jkc","Jack Kent Cooke College Scholarship","Scholarship","Jack Kent Cooke Foundation","United States","High school","Any",55000,"Up to $55,000 a year for four years",2,"None","Verified",["need-based","merit-based","private"],"https://www.jkcf.org","High school seniors with financial need and a 3.5 GPA.",3.5,"America/New_York"],
+["gates","The Gates Scholarship","Scholarship","Gates Foundation","United States","Undergraduate","Any",50000,"Full cost of attendance not covered by other aid",28,"None","Verified",["need-based","minority","private"],"https://www.thegatesscholarship.org","Pell-eligible minority high school seniors with a 3.3 GPA.",3.3,"America/New_York"],
+["hsf","Hispanic Scholarship Fund","Scholarship","Hispanic Scholarship Fund","United States","Undergraduate","Any",5000,"$500 to $5,000 awards",60,"None","Under Review",["need-based","minority","private"],"https://www.hsf.net","U.S. citizens or eligible non-citizens of Hispanic heritage.",3.0,"America/New_York"],
+["commonwealth","Commonwealth Master’s Scholarships","Scholarship","Commonwealth Scholarship Commission","United Kingdom","Postgraduate","Development",42000,"Fees, airfare, stipend and thesis grant",75,"None","Under Review",["government","need-based","international"],"https://cscuk.fcdo.gov.uk","Citizens of low and middle income Commonwealth countries.",3.2,"Europe/London"],
+["genz","STEM Pathways Award (sample)","Scholarship","Community Futures Trust","India","Undergraduate","Computer Science",3000,"One-time award of $3,000",9,"None","User Submitted",["STEM","need-based"],"https://example.org","Women in first or second year of an engineering degree.",2.8,"Asia/Kolkata"],
+["rhodes","Rhodes Scholarship","Scholarship","Rhodes Trust","United Kingdom","Postgraduate","Any",75000,"All fees and a living stipend at Oxford",120,"None","Verified",["merit-based","leadership","international"],"https://www.rhodeshouse.ox.ac.uk","Age 19–25 with a bachelor’s degree; apply through your constituency.",3.7,"Europe/London"],
+["sat","SAT","Exam","College Board","United States","High school","Any",0,"Score accepted by thousands of colleges",6,"$68","Verified",["entrance","private"],"https://collegeboard.org","Open to all students; register by the regular deadline.",0,"America/New_York"],
+["gre","GRE General Test","Exam","ETS","Global","Postgraduate","Any",0,"Score for graduate and business school admissions",33,"$220","Verified",["entrance","international"],"https://www.ets.org/gre","Open to all; no age or education requirement.",0,"America/New_York"],
+["ielts","IELTS Academic","Exam","IELTS","Global","Other","English",0,"English proficiency for study and migration",14,"$250","Verified",["international","private"],"https://ielts.org","Open to all candidates aged 16 and above.",0,"UTC"],
+["jee","JEE Main","Exam","National Testing Agency","India","Undergraduate","Engineering",0,"Entry to NITs, IIITs and gateway to JEE Advanced",85,"₹1,000","Verified",["entrance","government","STEM"],"https://jeemain.nta.ac.in","Class 12 pass or appearing candidates.",0,"Asia/Kolkata"],
+["neet","NEET-UG","Exam","National Testing Agency","India","Undergraduate","Medicine",0,"Single entrance test for MBBS and BDS seats",100,"₹1,700","Under Review",["entrance","government"],"https://neet.nta.nic.in","Class 12 with Physics, Chemistry, Biology; age 17 or older.",0,"Asia/Kolkata"],
+["upsc","UPSC Civil Services Preliminary","Exam","Union Public Service Commission","India","Other","Public service",0,"Entry to central civil services",-20,"₹100","Closed",["government"],"https://upsc.gov.in","Graduates aged 21–32, with relaxations for some categories.",0,"Asia/Kolkata"],
+["toefl","TOEFL iBT","Exam","ETS","Global","Other","English",0,"English proficiency accepted by 12,000+ institutions",19,"$200","Verified",["international","private"],"https://www.ets.org/toefl","Open to all non-native English speakers.",0,"America/New_York"],
+["gmat","GMAT Focus Edition","Exam","GMAC","Global","Postgraduate","Business",0,"Score for MBA and business master’s admissions",48,"$275","User Submitted",["entrance","private"],"https://www.mba.com","Open to all; tests last about 2 hours 15 minutes.",0,"America/New_York"]
+];
+const ITEMS=R.map(r=>({id:r[0],title:r[1],type:r[2],org:r[3],country:r[4],level:r[5],field:r[6],amt:r[7],award:r[8],due:at(r[9]),open:at(r[9]-60,9,0),fee:r[10],status:r[11],tags:r[12],url:r[13],elig:r[14],gpa:r[15],tz:r[16],docs:r[2]=="Exam"?ED:SD}));
+const find=id=>ITEMS.find(i=>i.id==id);
+const ST=["Researching","Documents Needed","Applied","Submitted","Interview","Result"];
+const DOCS=["Transcripts","Essays","Recommendation letters","ID proof","Test scores","Financial documents","Portfolio items"];
+const INT=[30,14,7,3,1];
+// state
+let S={saved:{},docs:{},custom:[],alerts:{on:[30,14,7,3,1],email:"",inapp:true},flag:{}};
+try{const x=localStorage.getItem("dh1");if(x)S=Object.assign(S,JSON.parse(x))}catch(e){}
+const save=()=>{try{localStorage.setItem("dh1",JSON.stringify(S))}catch(e){}};
+const $=s=>document.querySelector(s),main=$("#main");
+const days=d=>Math.ceil((d-new Date())/DAY);
+const urg=d=>{const n=days(d);return n<0?["over","Overdue"]:n<=7?["7","Due in "+(n||"<1")+(n==1?" day":" days")]:n<=30?["30","Due in "+n+" days"]:["later","Due in "+n+" days"]};
+const upill=i=>{if(i.status=="Closed")return`<span class="pill s-Closed">Closed</span>`;const[c,t]=urg(i.due);return`<span class="pill u-${c}">${t}</span>`};
+const stl=s=>({Verified:"Verified","Under Review":"Under Review","User Submitted":"User Submitted",Closed:"Closed"}[s]);
+const sc=s=>s=="Verified"?"Verified":s=="Under Review"?"Review":s=="User Submitted"?"User":"Closed";
+const spill=i=>S.flag[i.id]?`<span class="pill s-Flagged">Flagged</span>`:`<span class="pill s-${sc(i.status)}">${stl(i.status)}</span>`;
+const fmt=(d,tz)=>d.toLocaleString("en-US",{dateStyle:"medium",timeStyle:"short",timeZone:tz,timeZoneName:"short"});
+const money=n=>n?"$"+n.toLocaleString():"—";
+const toast=m=>{const t=$("#toast");t.innerHTML=`<div class="toast">${m}</div>`;setTimeout(()=>t.innerHTML="",2400)};
+const meta=(t,d)=>{document.title=t+" | Deadline Hub";$("meta[name=description]").content=d};
+const link=i=>`#/${i.type=="Exam"?"exams":"scholarships"}/${i.id}`;
+function toggleSave(id){if(S.saved[id]){delete S.saved[id];toast("Removed from tracker")}else{S.saved[id]="Researching";toast("Saved to tracker")}save();route()}
+const saveBtn=(i,sm)=>`<button class="btn alt ${sm?"sm":""}" data-save="${i.id}" aria-pressed="${!!S.saved[i.id]}">${S.saved[i.id]?"Saved ✓":"Save to Tracker"}</button>`;
+function card(i){return`<article class="card"><div>${spill(i)} ${upill(i)}</div><h3><a href="${link(i)}">${i.title}</a></h3><div class="meta">${i.org} · ${i.country}</div><div>${i.award}</div><div>${i.tags.map(t=>`<span class="tag">${t}</span>`).join(" ")}</div><div class="meta">Deadline: ${fmt(i.due,i.tz)}</div><div class="foot">${saveBtn(i,1)}<a class="btn sm" href="${link(i)}">Details</a></div></article>`}
+const sel=(id,label,opts)=>`<label>${label}<select id="${id}"><option value="">All</option>${opts.map(o=>`<option>${o}</option>`).join("")}</select></label>`;
+const uniq=k=>[...new Set(ITEMS.map(i=>i[k]))].sort();
+// pages
+function home(){meta("Scholarship & Exam Deadline Hub","Discover scholarships and exams, track deadlines and never miss an application.");
+const up=ITEMS.filter(i=>i.status!="Closed"&&days(i.due)>=0).sort((a,b)=>a.due-b.due).slice(0,5);
+main.innerHTML=`<section class="hero"><h1>Never miss a scholarship or exam deadline.</h1><p>Search verified opportunities, save them to your tracker and get reminders 30, 14, 7, 3 and 1 days before each due date.</p>
+<form class="search" role="search" id="hs"><input type="search" id="hq" aria-label="Search scholarships and exams" placeholder="Try “Fulbright”, “engineering” or “IELTS”"><button class="btn">Search</button></form></section>
+<section class="next" aria-labelledby="nx"><h2 id="nx">Closing soonest</h2>${up.map(i=>`<div class="row"><div class="t"><a href="${link(i)}">${i.title}</a><small>${i.org} · ${fmt(i.due,i.tz)}</small></div>${upill(i)}${saveBtn(i,1)}</div>`).join("")}<p><a href="#/calendar">See the full calendar</a></p></section>
+<h2>Featured scholarships</h2><div class="grid">${ITEMS.filter(i=>i.type=="Scholarship"&&i.status=="Verified").slice(0,3).map(card).join("")}</div>
+<h2 style="margin-top:32px">Featured exams</h2><div class="grid">${ITEMS.filter(i=>i.type=="Exam"&&i.status=="Verified").slice(0,3).map(card).join("")}</div>
+<p style="margin-top:32px"><a class="btn" href="#/scholarships">Browse scholarships</a> <a class="btn alt" href="#/exams">Browse exams</a> <a class="btn alt" href="#/tracker">Open my tracker</a></p>`;
+$("#hs").onsubmit=e=>{e.preventDefault();window._q=$("#hq").value;location.hash="#/scholarships"}}
+function listing(type){const sch=type=="Scholarship",p=sch?"Scholarships":"Exams";meta(p,"Search and filter "+p.toLowerCase()+" by country, level, field, deadline and eligibility.");
+const pool=ITEMS.filter(i=>i.type==type);
+main.innerHTML=`<h1>${p}</h1><p>${sch?"Filter by what you qualify for.":"Entrance, scholarship, government and competitive exams."} Every listing links to its official source.</p>
+<form class="filters" id="f" role="search" aria-label="Filter ${p}"><label>Keyword<input type="search" id="q" value="${window._q||""}"></label>
+${sel("co","Country",[...new Set(pool.map(i=>i.country))].sort())}${sel("lv","Education level",[...new Set(pool.map(i=>i.level))])}${sel("fd","Field of study",[...new Set(pool.map(i=>i.field))].sort())}
+${sel("mo","Deadline month",["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"])}${sel("ls","Listing status",["Verified","Under Review","User Submitted","Closed"])}
+${sch?`<label>My GPA (eligibility match)<input id="gp" type="number" step=".1" min="0" max="4" placeholder="e.g. 3.4"></label>${sel("am","Award amount",["Under $10,000","$10,000–$50,000","Over $50,000"])}`:""}
+<label>Sort by<select id="so"><option value="d">Deadline (soonest)</option>${sch?'<option value="a">Award (highest)</option>':""}</select></label></form>
+<p id="cnt" aria-live="polite"></p><div class="grid" id="res"></div>`;
+const run=()=>{const v=id=>$("#"+id)?$("#"+id).value:"";const q=v("q").toLowerCase(),gp=parseFloat(v("gp")),mo=v("mo");
+let r=pool.filter(i=>(!q||(i.title+i.org+i.field+i.tags.join(" ")+i.country).toLowerCase().includes(q))&&(!v("co")||i.country==v("co"))&&(!v("lv")||i.level==v("lv"))&&(!v("fd")||i.field==v("fd"))&&(!v("ls")||i.status==v("ls"))&&(!mo||i.due.toLocaleString("en-US",{month:"short"})==mo)&&(isNaN(gp)||i.gpa<=gp)&&(!v("am")||(v("am")[0]=="U"?i.amt<1e4:v("am")[0]=="O"?i.amt>5e4:i.amt>=1e4&&i.amt<=5e4)));
+r.sort(v("so")=="a"?(a,b)=>b.amt-a.amt:(a,b)=>a.due-b.due);
+$("#cnt").textContent=r.length+" "+(r.length==1?"result":"results");$("#res").innerHTML=r.length?r.map(card).join(""):`<p>No matches. Clear a filter or try a broader keyword.</p>`};
+$("#f").oninput=run;$("#f").onsubmit=e=>e.preventDefault();window._q="";run()}
+function detail(id){const i=find(id);if(!i){main.innerHTML="<h1>Not found</h1><p><a href='#/'>Go home</a></p>";return}
+meta(i.title,i.award+". Deadline "+i.due.toDateString()+". "+i.org+".");
+const steps=i.type=="Exam"?["Read the eligibility rules on the official site","Create an account and complete your profile","Upload your documents","Pay the fee and download the confirmation","Add the exam date to your calendar"]:["Check eligibility against the criteria","Gather the required documents","Draft your essay and ask referees early","Submit through the official portal before the deadline","Keep your confirmation and note any interview dates"];
+const ld={"@context":"https://schema.org","@type":"Event",name:i.title+" deadline",startDate:i.due.toISOString(),eventAttendanceMode:"https://schema.org/OnlineEventAttendanceMode",location:{"@type":"VirtualLocation",url:i.url},organizer:{"@type":"Organization",name:i.org,url:i.url},description:i.award};
+main.innerHTML=`<p><a href="#/${i.type=="Exam"?"exams":"scholarships"}">← All ${i.type.toLowerCase()}s</a></p><h1>${i.title}</h1><p>${spill(i)} ${upill(i)} <span class="tag">${i.type}</span> ${i.tags.map(t=>`<span class="tag">${t}</span>`).join(" ")}</p>
+${i.status!="Verified"?`<p class="note">This listing is ${stl(i.status).toLowerCase()}. Check every detail on the official website.</p>`:""}
+<dl class="facts"><dt>Provider</dt><dd>${i.org}</dd><dt>${i.type=="Exam"?"Benefit":"Award"}</dt><dd>${i.award}</dd><dt>Eligibility</dt><dd>${i.elig}</dd><dt>Region</dt><dd>${i.country}</dd><dt>Level</dt><dd>${i.level} · ${i.field}</dd><dt>Opens</dt><dd>${fmt(i.open,i.tz)}</dd><dt>Deadline</dt><dd><strong>${fmt(i.due,i.tz)}</strong></dd><dt>Fee</dt><dd>${i.fee}</dd><dt>Official link</dt><dd><a href="${i.url}" rel="noopener noreferrer" target="_blank">${i.url.replace("https://","")}</a></dd></dl>
+<div class="two"><section><h2>Required documents</h2><ul>${i.docs.map(d=>`<li>${d}</li>`).join("")}</ul></section><section><h2>How to apply</h2><ol>${steps.map(s=>`<li>${s}</li>`).join("")}</ol></section></div>
+<p>${saveBtn(i)} <a class="btn" href="${i.url}" rel="noopener noreferrer" target="_blank">Go to official site</a></p>
+<p class="meta">Reminders: ${S.alerts.on.map(d=>d+" days").join(", ")||"none"} before the deadline.</p><script type="application/ld+json">${JSON.stringify(ld)}<\/script>`}
+function calendar(){meta("Deadline Calendar","Monthly and list views of scholarship and exam deadlines, color-coded by urgency.");
+let view=window._cv||"month",m=window._cm||new Date(base.getFullYear(),base.getMonth(),1);
+const legend=`<p>${[["u-over","Overdue"],["u-7","Within 7 days"],["u-30","Within 30 days"],["u-later","Later"]].map(x=>`<span class="pill ${x[0]}">${x[1]}</span>`).join(" ")}</p>`;
+const col=i=>i.status=="Closed"?"over":urg(i.due)[0];
+let body="";
+if(view=="month"){const first=m.getDay?new Date(m.getFullYear(),m.getMonth(),1):m,n=new Date(first.getFullYear(),first.getMonth()+1,0).getDate();
+body=`<div class="tw"><div class="cal">${"SMTWTFS".split("").map((d,k)=>`<div class="h" aria-hidden="true">${["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][k]}</div>`).join("")}${Array(first.getDay()).fill('<div></div>').join("")}${Array.from({length:n},(_,k)=>{const dd=k+1,it=ITEMS.filter(i=>i.due.getFullYear()==first.getFullYear()&&i.due.getMonth()==first.getMonth()&&i.due.getDate()==dd);return`<div class="d"><b>${dd}</b>${it.map(i=>`<span class="u-${col(i)}"><a href="${link(i)}" style="color:inherit" title="${i.title}">${i.title}</a></span>`).join("")}</div>`}).join("")}</div></div>`;m=first}
+else body=ITEMS.slice().sort((a,b)=>a.due-b.due).map(i=>`<div class="row"><div class="t"><a href="${link(i)}">${i.title}</a><small>${i.type} · ${fmt(i.due,i.tz)}</small></div><span class="pill u-${col(i)}">${i.status=="Closed"?"Closed":urg(i.due)[1]}</span></div>`).join("");
+main.innerHTML=`<h1>Deadline calendar</h1><div class="seg" role="group" aria-label="View"><button aria-pressed="${view=="month"}" data-v="month">Month</button><button aria-pressed="${view=="list"}" data-v="list">List</button></div>
+${view=="month"?`<h2 style="margin-top:16px">${m.toLocaleString("en-US",{month:"long",year:"numeric"})} <button class="btn alt sm" data-m="-1" aria-label="Previous month">‹</button> <button class="btn alt sm" data-m="1" aria-label="Next month">›</button></h2>`:""}${legend}${body}`;
+main.querySelectorAll("[data-v]").forEach(b=>b.onclick=()=>{window._cv=b.dataset.v;window._cm=m;calendar()});
+main.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{window._cm=new Date(m.getFullYear(),m.getMonth()+ +b.dataset.m,1);calendar()})}
+function tracker(){meta("My Tracker","Save opportunities and track every application from research to result.");
+const ids=Object.keys(S.saved);
+main.innerHTML=`<h1>My tracker</h1>${ids.length?`<div class="tw"><table><thead><tr><th>Opportunity</th><th>Deadline</th><th>Status</th><th></th></tr></thead><tbody>${ids.map(id=>{const i=find(id);return`<tr><td><a href="${link(i)}">${i.title}</a><br><small>${i.org}</small></td><td>${fmt(i.due,i.tz)}<br>${upill(i)}</td><td><select data-st="${id}" aria-label="Status for ${i.title}">${ST.map(s=>`<option ${S.saved[id]==s?"selected":""}>${s}</option>`).join("")}</select></td><td><button class="btn alt sm" data-save="${id}">Remove</button></td></tr>`}).join("")}</tbody></table></div>`:`<p>Nothing saved yet. Browse <a href="#/scholarships">scholarships</a> or <a href="#/exams">exams</a> and choose Save to Tracker.</p>`}`;
+main.querySelectorAll("[data-st]").forEach(s=>s.onchange=()=>{S.saved[s.dataset.st]=s.value;save();toast("Status updated")})}
+function checklist(){meta("Document Checklist","Track transcripts, essays, recommendation letters, IDs, scores and financial documents.");
+const all=[...DOCS,...S.custom],done=all.filter(d=>S.docs[d]).length;
+main.innerHTML=`<h1>Document checklist</h1><p>${done} of ${all.length} ready.</p><div role="progressbar" aria-valuenow="${done}" aria-valuemax="${all.length}" aria-label="Documents ready" style="height:10px;background:var(--line);border-radius:9px;overflow:hidden"><div style="height:100%;width:${all.length?done/all.length*100:0}%;background:var(--ac2)"></div></div>
+<div style="margin-top:12px">${all.map((d,k)=>`<label class="chk"><input type="checkbox" data-d="${d}" ${S.docs[d]?"checked":""}> ${d}</label>`).join("")}</div>
+<form id="cf" style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap"><input id="cd" aria-label="Custom document" placeholder="Add a document, e.g. Passport copy"><button class="btn">Add</button></form>`;
+main.querySelectorAll("[data-d]").forEach(c=>c.onchange=()=>{S.docs[c.dataset.d]=c.checked;save();checklist()});
+$("#cf").onsubmit=e=>{e.preventDefault();const v=$("#cd").value.trim();if(v&&!all.includes(v)){S.custom.push(v);save();checklist()}}}
+function alerts(){meta("Alerts & Reminders","Choose when to be reminded before each deadline.");
+const ids=Object.keys(S.saved).map(find).filter(i=>i.status!="Closed"&&days(i.due)>=0);
+const due=ids.map(i=>({i,n:days(i.due)})).filter(x=>S.alerts.on.some(k=>x.n<=k)).sort((a,b)=>a.n-b.n);
+main.innerHTML=`<h1>Alerts & reminders</h1><div class="two"><section><h2>Reminder schedule</h2>${INT.map(k=>`<label class="chk"><input type="checkbox" data-k="${k}" ${S.alerts.on.includes(k)?"checked":""}> ${k} ${k==1?"day":"days"} before</label>`).join("")}
+<label class="chk"><input type="checkbox" id="ia" ${S.alerts.inapp?"checked":""}> Show in-app reminders</label>
+<form id="ef" style="margin-top:12px;display:grid;gap:8px"><label>Email for reminders<input type="email" id="em" value="${S.alerts.email}" autocomplete="email"></label><button class="btn">Save preferences</button></form>
+<p class="meta">Email delivery needs the backend job described in the project plan. In-app reminders work now.</p></section>
+<section><h2>Reminders for you</h2>${!S.alerts.inapp?"<p>In-app reminders are off.</p>":due.length?due.map(x=>`<div class="row"><div class="t"><a href="${link(x.i)}">${x.i.title}</a><small>${fmt(x.i.due,x.i.tz)}</small></div>${upill(x.i)}</div>`).join(""):"<p>No reminders yet. Save an opportunity to your tracker and it will appear here as its deadline approaches.</p>"}</section></div>`;
+main.querySelectorAll("[data-k]").forEach(c=>c.onchange=()=>{const k=+c.dataset.k;S.alerts.on=c.checked?[...S.alerts.on,k]:S.alerts.on.filter(x=>x!=k);save();alerts()});
+$("#ia").onchange=e=>{S.alerts.inapp=e.target.checked;save();alerts()};
+$("#ef").onsubmit=e=>{e.preventDefault();S.alerts.email=$("#em").value;save();toast("Preferences saved")}}
+function resources(){meta("Resources","Guides on essays, recommendation letters, exam prep and avoiding scams.");
+const G=[["How to write a scholarship essay","Answer the prompt directly. Open with one specific moment, show what you did and what you learned, and tie it to what the provider values. Leave time for two rounds of feedback and a read-aloud pass."],["How to request a recommendation letter","Ask at least six weeks ahead. Give your referee your résumé, the deadline, the submission link and three points you hope they cover. Send a thank-you note and a reminder one week before."],["How to prepare for an entrance exam","Work backward from the exam date. Take a timed practice test first, list weak topics, study in short daily blocks and repeat full practice tests every week in the final month."],["How to avoid scholarship scams","Real scholarships never charge to apply or guarantee you will win. Be wary of pressure, requests for bank details, and unofficial domains. Find the provider through its official website, then compare it with the link here."],["How to apply safely","Use the official portal only, keep copies of everything you submit, and share ID numbers only on pages that start with https and belong to the provider."]];
+main.innerHTML=`<h1>Resources</h1>${G.map(g=>`<details><summary>${g[0]}</summary><p>${g[1]}</p></details>`).join("")}`}
+function about(){meta("About & Contact","Our mission, editorial policy, FAQ, contact form and privacy policy.");
+main.innerHTML=`<h1>About & contact</h1><div class="two"><section><h2>Our mission</h2><p>We help students, parents, teachers and counselors find real opportunities and meet their deadlines.</p><h2>Editorial policy</h2><p>Staff check each listing against its official source. Verified means we confirmed the dates and rules. Under Review means a check is in progress. User Submitted means a visitor sent it and we have not checked it yet.</p><h2>Privacy</h2><p>We store only what you save, and on this demo it stays in your browser. Passwords are never stored in plain text on the live site, and we never sell data.</p></section>
+<section><h2>Contact us</h2><form id="ct" style="display:grid;gap:10px"><label>Name<input required></label><label>Email<input type="email" required></label><label>Message<textarea rows="4" required></textarea></label><input class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" id="hpf"><button class="btn">Send message</button></form></section></div>
+<h2>FAQ</h2><details><summary>Is it free?</summary><p>Yes. Searching, saving and reminders are free.</p></details><details><summary>Can I submit a listing?</summary><p>Yes. Send it through the contact form with the official link. Staff review it before it is marked Verified.</p></details><details><summary>Can I trust the dates?</summary><p>Check the official site before you apply. Dates can change.</p></details>`;
+$("#ct").onsubmit=e=>{e.preventDefault();if($("#hpf").value)return;e.target.reset();toast("Message sent. We reply within 3 working days.")}}
+function admin(){meta("Admin","Staff dashboard");
+main.innerHTML=`<h1>Admin dashboard</h1><p class="note">Demo only. The live site requires a staff login with role-based access. Changes here stay in this browser.</p><div class="tw"><table><thead><tr><th>Listing</th><th>Status</th><th>Actions</th></tr></thead><tbody>${ITEMS.map(i=>`<tr><td>${i.title}<br><small>${i.type}</small></td><td>${spill(i)}</td><td><button class="btn alt sm" data-a="v" data-id="${i.id}">Verify</button> <button class="btn alt sm" data-a="f" data-id="${i.id}">${S.flag[i.id]?"Unflag":"Flag"}</button> <button class="btn alt sm" data-a="c" data-id="${i.id}">Archive</button></td></tr>`).join("")}</tbody></table></div>`;
+main.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>{const i=find(b.dataset.id),a=b.dataset.a;if(a=="v")i.status="Verified";if(a=="c")i.status="Closed";if(a=="f"){S.flag[i.id]=!S.flag[i.id];save()}admin()})}
+// router
+const NAV=[["","Home"],["scholarships","Scholarships"],["exams","Exams"],["calendar","Calendar"],["tracker","Tracker"],["checklist","Documents"],["alerts","Alerts"],["resources","Resources"],["about","About"]];
+function route(){const p=(location.hash.slice(2)||"").split("/"),k=p[0];
+$("#nav").innerHTML=NAV.map(n=>`<li><a href="#/${n[0]}" ${n[0]==k?'aria-current="page"':""}>${n[1]}</a></li>`).join("");
+if(k=="scholarships")p[1]?detail(p[1]):listing("Scholarship");else if(k=="exams")p[1]?detail(p[1]):listing("Exam");
+else({calendar,tracker,checklist,alerts,resources,about,admin}[k]||home)();
+bind()}
+function bind(){document.querySelectorAll("[data-save]").forEach(b=>b.onclick=()=>toggleSave(b.dataset.save))}
+let last="";window.addEventListener("hashchange",()=>{route();window.scrollTo(0,0);main.focus()});route();
+</script>
+</body>
+</html>
